@@ -91,6 +91,9 @@ O   L
     >>> carro.calcular_direcao()
     'Oeste'
 """
+
+
+
 NORTE="NORTE"
 LESTE="LESTE"
 SUL="SUL"
@@ -108,25 +111,35 @@ class Motor:
         self.velocidade = max(0, self.velocidade)
 
 class Direcao:
+    rotacao_a_direita = {
+        NORTE: LESTE, LESTE: SUL, SUL: OESTE, OESTE: NORTE
+    }
+    rotacao_a_esquerda = {
+        NORTE: OESTE, OESTE: SUL, SUL:LESTE, LESTE: NORTE
+    }
     def __init__(self):
         self.valor = NORTE
 
     def girar_a_direita(self):
-        if self.valor == NORTE:
-            self.valor = LESTE
-        elif self.valor == LESTE:
-            self.valor = SUL
-        elif self.valor == SUL:
-            self.valor = OESTE
-        else:
-            self.valor = NORTE
+        self.valor = self.rotacao_a_direita[self.valor]
+        # if self.valor == NORTE:
+        #     self.valor = LESTE
+        # elif self.valor == LESTE:
+        #     self.valor = SUL
+        # elif self.valor == SUL:
+        #     self.valor = OESTE
+        # else:
+        #     self.valor = NORTE
 
     def girar_a_esquerda(self):
-        if self.valor == NORTE:
-            self.valor = OESTE
-        elif self.valor == OESTE:
-            self.valor = SUL
-        elif self.valor == SUL:
-            self.valor = LESTE
-        else:
-            self.valor = NORTE
+        self.valor = self.rotacao_a_esquerda[self.valor]
+        # if self.valor == NORTE:
+        #     self.valor = OESTE
+        # elif self.valor == OESTE:
+        #     self.valor = SUL
+        # elif self.valor == SUL:
+        #     self.valor = LESTE
+        # else:
+        #     self.valor = NORTE
+
+
